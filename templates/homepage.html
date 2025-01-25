@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Riyadh Metro</title>
+    <link rel="icon" href="/static/images/train.png" type="image/png" />
+    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Almarai", sans-serif;
+        color: #333;
+      }
+      .lang-link {
+        color: #32cd32;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1rem;
+      }
+
+      .lang-link:hover {
+        text-decoration: underline;
+      }
+      header {
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+      }
+
+      header img {
+        width: 50px;
+      }
+
+      nav a {
+        margin: 0 15px;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: #32cd32;
+      }
+
+      .hero-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 50px;
+        background-color: #f2f2f2;
+        position: relative;
+      }
+
+      .hero-text {
+        max-width: 500px;
+      }
+
+      .hero-text h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #32cd32;
+      }
+
+      .hero-text p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+        color: #555;
+      }
+
+      .hero-text button {
+        background-color: #32cd32;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .hero-text button:hover {
+        background-color: #28a428;
+      }
+
+      .hero-image img {
+        max-width: 100%;
+        border-radius: 8px;
+      }
+
+      .spacer {
+        background-color: #f2f2f2;
+        height: 150px;
+      }
+
+      footer {
+        background-color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        width: 100%;
+        box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      footer p {
+        margin: 0;
+        color: #555;
+        font-size: 0.9rem;
+      }
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/plan">Plan</a>
+        <a href="/paths">Lines</a>
+        <a href="/tickets">Tickets</a>
+        <a href="/about">About</a>
+        <a href="/contact_form">Contact</a>
+        <a href="/user-profile">Profile</a>
+      </nav>
+      <div>
+        <a href="/homepage_ar" class="lang-link">عربي</a>
+      </div>
+    </header>
+
+    <div class="hero-section">
+      <div class="hero-text">
+        <h1>Your next ride is just a tap away!</h1>
+        <p>Book fast, travel easy, and save more!</p>
+        <a href="/plan"><button>Plan and Go</button></a>
+      </div>
+      <div class="hero-image">
+        <img src="/static/images/home-banner.jpg" alt="Riyadh Metro Station" />
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+
+ 
+  </body>
+</html>

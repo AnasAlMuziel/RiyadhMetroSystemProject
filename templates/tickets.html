@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tickets</title>
+    <link rel="icon" href="../static/images/train.png" type="image/png" />
+    <style>
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 15px 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .ticket-section {
+            background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e8 100%);
+            padding: 60px 20px;
+        }
+
+        .ticket-card {
+            width: 280px;
+            background-color: white;
+            border-radius: 12px;
+            text-align: center;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .ticket-button {
+            display: inline-block;
+            text-decoration: none;
+            padding: 12px 30px;
+            background-color: #32cd32;
+            color: white;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .tickets-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="ticket-section">
+        <header>
+            <nav>
+                <a href="/homepage">Home</a>
+                <a href="/plan">Plan</a>
+                <a href="/paths">Lines</a>
+                <a href="/about">About</a>
+                <a href="/contact_form">Contact</a>
+                <a href="/user-profile">Profile</a>
+            </nav>
+            <a href="/tickets-ar" style="color: #32cd32; text-decoration: none; font-weight: bold; font-size: 1rem;">عربي</a>
+        </header>
+
+        <h2 style="text-align: center; color: #333; font-size: 2.5rem; margin: 80px 0 30px 0;">Available Ticket Categories</h2>
+        
+        <div style="text-align: center; margin: 40px 0;">
+            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 30px;">
+                <div style="height: 1px; width: 100px; background-color: #32cd32;"></div>
+                <span style="padding: 0 20px; color: #32cd32; font-weight: bold; font-size: 1.5rem;">Premium Tickets</span>
+                <div style="height: 1px; width: 100px; background-color: #32cd32;"></div>
+            </div>
+        </div>
+        
+        <div class="tickets-container">
+            <div class="ticket-card">
+                <h3 style="color: #32cd32; font-size: 1.6rem; margin-bottom: 15px;">Premium 2 Hours</h3>
+                <p style="font-size: 1.4rem; color: #555; margin-bottom: 25px;">10 SAR</p>
+                <a href="/premium2hrs" class="ticket-button">Buy Now</a>
+            </div>
+            
+            <div class="ticket-card">
+                <h3 style="color: #32cd32; font-size: 1.6rem; margin-bottom: 15px;">Premium 3 Days</h3>
+                <p style="font-size: 1.4rem; color: #555; margin-bottom: 25px;">50 SAR</p>
+                <a href="/premium3days" class="ticket-button">Buy Now</a>
+            </div>
+
+            <div class="ticket-card">
+                <h3 style="color: #32cd32; font-size: 1.6rem; margin-bottom: 15px;">Premium 7 Days</h3>
+                <p style="font-size: 1.4rem; color: #555; margin-bottom: 25px;">100 SAR</p>
+                <a href="/premium7days" class="ticket-button">Buy Now</a>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 40px 0;">
+            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 30px;">
+                <div style="height: 1px; width: 100px; background-color: #32cd32;"></div>
+                <span style="padding: 0 20px; color: #32cd32; font-weight: bold; font-size: 1.5rem;">Regular Tickets</span>
+                <div style="height: 1px; width: 100px; background-color: #32cd32;"></div>
+            </div>
+        </div>
+        
+        <div class="tickets-container">
+            <div class="ticket-card">
+                <h3 style="color: #32cd32; font-size: 1.6rem; margin-bottom: 15px;">Regular 2 Hours</h3>
+                <p style="font-size: 1.4rem; color: #555; margin-bottom: 25px;">4 SAR</p>
+                <a href="/regular2hrs" class="ticket-button">Buy Now</a>
+            </div>
+            
+            <div class="ticket-card">
+                <h3 style="color: #32cd32; font-size: 1.6rem; margin-bottom: 15px;">Regular 3 Days</h3>
+                <p style="font-size: 1.4rem; color: #555; margin-bottom: 25px;">20 SAR</p>
+                <a href="/regular3days" class="ticket-button">Buy Now</a>
+            </div>
+            
+            <div class="ticket-card">
+                <h3 style="color: #32cd32; font-size: 1.6rem; margin-bottom: 15px;">Regular 7 Days</h3>
+                <p style="font-size: 1.4rem; color: #555; margin-bottom: 25px;">40 SAR</p>
+                <a href="/regular7days" class="ticket-button">Buy Now</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

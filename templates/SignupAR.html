@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إنشاء حساب</title>
+    <link rel="icon" href="/static/images/train.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Almarai", sans-serif;
+        background: url("/static/images/home-banner.jpg") no-repeat center center fixed;
+        background-size: cover;
+        color: #333;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: rgba(247, 247, 249, 0.9);
+      }
+
+      #p2 {
+        position: absolute;
+        bottom: 5px;
+        right: 20px;
+        font-size: 1.5rem;
+      }
+
+      .login-box {
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+      }
+
+      .login-box h1 {
+        font-size: 1.8rem;
+        color: #32cd32;
+        margin-bottom: 1rem;
+      }
+
+      .login-box input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+        box-sizing: border-box;
+      }
+
+      .login-box button {
+        width: 100%;
+        padding: 10px;
+        background-color: #32cd32;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .login-box button:hover {
+        background-color: #28a428;
+      }
+
+      .login-box a {
+        color: #32cd32;
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      .login-box a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="login-box">
+        <h1>إنشاء حساب</h1>
+        <form action="/register-ar" method="post">
+          <input
+            type="text"
+            name="firstname"
+            placeholder="الأسم الأول"
+            required
+          />
+          <input
+            type="text"
+            name="lastname"
+            placeholder="الأسم الأخير"
+            required
+          />
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <label>الجنس:</label>
+            <div style="display: flex; align-items: center; gap: 15px;">
+              <input type="radio" id="male" name="gender" value="male" required />
+              <label for="male">ذكر</label>
+              <input type="radio" id="female" name="gender" value="female" />
+              <label for="female">أنثى</label>
+            </div>
+          </div>
+          <input
+            type="text"
+            name="phone_number"
+            placeholder="رقم الجوال"
+            required
+          />
+          <input
+            type="date"
+            name="birthday"
+            placeholder="تاريخ الميلاد"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="البريد الإلكتروني"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="كلمة السر"
+            required
+          />
+          <input
+            type="password"
+            name="password_confirmation"
+            placeholder="تأكيد كلمة السر"
+            required
+          />
+          <button type="submit">إنشاء الحساب</button>
+        </form>
+        <p id="p2"><a href="/SignupEN.html">English</a></p>
+        <p>لديك حساب؟ <a href="/loginAR.html">تسجيل الدخول</a></p>
+      </div>
+    </div>
+  </body>
+</html>

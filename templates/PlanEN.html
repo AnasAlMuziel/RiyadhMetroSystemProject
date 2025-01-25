@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riyadh Metro Map</title>
+    <link rel="icon" href="/static/images/train.png" type="image/png" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static\css\styles.css">
+    
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/homepage">Home page</a>
+            <a href="/paths">Lines</a>
+            <a href="/tickets">Tickets</a>
+            <a href="/about">About</a>
+            <a href="/contact_form?source_page=PlanEN.html">Contact</a>
+        <a href="/user-profile">Profile</a>
+
+        </nav>
+        <div>
+            <a href="/plan-ar" class="lang-link">عربي</a>
+        </div>
+    </header>
+
+    <div class="map-container">
+        <div class="map-sidebar">
+            <h2>Metro Map</h2>
+            <div class="station-info">
+                <h3>Route Planner</h3>
+                <form id="route-form">
+                    <div class="input-group">
+                        <label for="start">Start:</label>
+                        <select id="start">
+                            <option value="">Select start station</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="destination">Destination:</label>
+                        <select id="destination">
+                            <option value="">Select destination</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="plan-button">Find Route</button>
+                </form>
+                <div id="route-info" class="route-info"></div>
+            </div>
+        </div>
+        <div id="map"></div>
+    </div>
+
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="static\js\map.js"></script>
+</body>
+</html>

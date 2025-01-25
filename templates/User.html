@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+    <link rel="icon" href="/static/images/train.png" type="image/png" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+        body {
+            margin: 0;
+            font-family: "Almarai", sans-serif;
+            background: url("/static/images/home-banner.jpg") no-repeat
+            center center fixed;
+            background-size: cover;
+            background-color: #f2f2f2;
+            color: #333;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #32cd32;
+        }
+
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: rgba(247, 247, 249, 0.9);
+            padding: 20px;
+        }
+
+        .profile-box {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .profile-box h1 {
+            font-size: 1.8rem;
+            color: #32cd32;
+            margin-bottom: 1rem;
+        }
+
+        .profile-box p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .profile-box img {
+            border-radius: 50%;
+            width: 120px;
+            margin-bottom: 1rem;
+        }
+
+        .profile-box .profile-detail {
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+
+        .profile-box .profile-detail strong {
+            display: block;
+            color: #333;
+        }
+
+        footer {
+            background-color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin: 0;
+            color: #555;
+            font-size: 0.9rem;
+        }
+        .lang-link {
+        color: #32cd32;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1rem;
+      }
+
+      .lang-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/homepage">Home Page</a>
+            <a href="/plan">Plan</a>
+            <a href="/paths">Lines</a>
+            <a href="/tickets">Tickets</a>
+            <a href="/about">About</a>
+            <a href="/contact_form">Contact</a>
+        </nav>
+        <div>
+            <a href="/user-profile?source_page=UserAR.html" class="lang-link">عربي</a>
+          </div>
+    </header>
+
+    <div class="profile-container">
+        <div class="profile-box">
+            <img src="/static/images/people.png" alt="User Avatar" />
+            <h1>{{ user.firstname }} {{ user.lastname }}</h1>
+            <div class="profile-detail">
+                <strong>Email:</strong> {{ user.email }}
+            </div>
+            <div class="profile-detail">
+                <strong>Phone:</strong> {{ user.phone_number }}
+            </div>
+            <div class="profile-detail">
+                <strong>Gender:</strong> {{ user.gender }}
+            </div>
+            <div class="profile-detail">
+                <strong>Birthday:</strong> {{ user.birthday }}
+            </div>
+        </div>
+    </div>
+
+    <footer>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Information</title>
+    <link rel="icon" href="../static/images/train.png" type="image/png" />
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e0f7e9;
+        }
+        .card-container {
+            position: relative;
+            text-align: left;
+            width: auto;
+        }
+        .card-container img {
+            width: auto;
+            height: auto;
+        }
+        .card-text {
+            position: absolute;
+            top: 50%;
+            left: 53%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: bold;
+        }
+        .ticket-number-text {
+            position: absolute;
+            top: 68%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: normal;
+        }
+        .barcode-container {
+            position: absolute;
+            top: 49%;
+            left: 18%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+        }
+        .barcode-container img {
+            width: 100%;
+            height: 100%;
+            border: solid 1px #28a428;
+        }
+    </style>
+</head>
+<body>
+    <div class="ticket-info">
+        <div class="card-container">
+            <img src="/static/images/Green.png" alt="Metro Card">
+            <div class="card-text"><h1>{{ user.firstname }} {{ user.lastname }}</h1></div>
+            <div class="ticket-number-text" id="ticketNumber">0123456789</div>
+            <div class="barcode-container" id="barcodeContainer"></div>
+        </div>
+    </div>
+    <script>
+        function generateRandomNumber() {
+            return Math.floor(1000000000 + Math.random() * 9000000000).toString();
+        }
+        function generateQRCode(number, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            const qrData = `TICKET:${number}`;
+            console.log("QR Data:", qrData);
+            QRCode.toDataURL(qrData, function (error, url) {
+                if (error) {
+                    console.error("Error generating QR code:", error);
+                } else {
+                    console.log("QR code generated successfully!");
+                    const img = document.createElement('img');
+                    img.src = url;
+                    container.appendChild(img);
+                }
+            });
+        }
+        const randomNumber = generateRandomNumber();
+        console.log("Generated Number:", randomNumber);
+        document.getElementById('ticketNumber').textContent = randomNumber;
+        generateQRCode(randomNumber, 'barcodeContainer');
+    </script>
+</body>
+</html>

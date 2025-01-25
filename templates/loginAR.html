@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تسجيل الدخول - مترو الرياض</title>
+    <link rel="icon" href="/static/images/train.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Almarai", sans-serif;
+        background: url("/static/images/home-banner.jpg") no-repeat
+          center center fixed;
+        background-size: cover;
+        color: #333;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: rgba(247, 247, 249, 0.9);
+      }
+
+      #p2{
+       position: absolute;
+       bottom: 5px;
+       right: 20px;
+       font-size: 1.5rem;
+      }
+
+      .login-box {
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+      }
+
+      .login-box h1 {
+        font-size: 1.8rem;
+        color: #32cd32;
+        margin-bottom: 1rem;
+      }
+
+      .login-box p {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+        color: #666;
+      }
+
+      .login-box input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+        box-sizing: border-box;
+      }
+
+      .login-box #b1 {
+        width: 50%;
+        padding: 10px;
+        background-color: #32cd32;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        display: inline-block;
+      }
+
+      .login-box button:hover {
+        background-color: #28a428;
+      }
+
+      .login-box a {
+        color: #32cd32;
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      .login-box a:hover {
+        text-decoration: underline;
+      }
+
+      .logo {
+        margin-bottom: 2rem;
+      }
+
+      .logo img {
+        width: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="login-box">
+        <div class="logo">
+         
+        </div>
+        <h1>مرحبًا بك في مترو الرياض</h1>
+        <p>الرجاء تسجيل الدخول للوصول إلى حسابك</p>
+        <form action="http://127.0.0.1:5000/login" method="post">
+
+          <input
+            type="email"
+            name="email"
+            placeholder="البريد الإلكتروني"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="كلمة المرور"
+            required
+          />
+          <input type="hidden" name="source_page" value="loginAR.html" />
+          <button  id="b1" type="submit">تسجيل الدخول</button>
+        </form>
+        <p><a href="http://127.0.0.1:5000/forgot-password-ar">نسيت كلمة المرور؟</a></p>
+        <p id="p2"><a href="http://127.0.0.1:5000/login">English</a></p>
+        <p>ليس لديك حساب؟ <a href="http://127.0.0.1:5000/signup-a">إنشاء حساب</a></p>
+      </div>
+    </div>
+  </body>
+</html>

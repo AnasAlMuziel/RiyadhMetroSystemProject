@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خطوط ومحطات المترو</title>
+    <link rel="icon" href="../static/images/train.png" type="image/png" />
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: "Almarai", sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        .lang-link {
+            color: #32cd32;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        .lang-link:hover {
+            text-decoration: underline;
+        }
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            margin-bottom: 20px; 
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #32cd32;
+        }
+        .intro {
+            text-align: center;
+            padding: 20px;
+            background-color: #e8f5e9;
+            margin-bottom: 20px; 
+        }
+        .intro h1 {
+            color: #28a745;
+        }
+        .lines {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px;
+            flex-wrap: wrap;
+        }
+        .line {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            text-align: right;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .line:hover {
+            transform: scale(1.02); 
+        }
+        .line-header {
+            height: 30px;
+            border-radius: 8px 8px 0 0;
+            margin: -10px -10px 10px -10px;
+            display: flex;
+            align-items: center;
+            padding-right: 10px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .red-line .line-header {
+            background-color: #d32f2f; 
+        }
+        .yellow-line .line-header {
+            background-color: #fbc02d;
+        }
+        .purple-line .line-header {
+            background-color: #6a1b9a; 
+        }
+        .stations {
+            margin-top: 10px;
+        }
+        .stations ul {
+            list-style: none;
+            padding: 0;
+        }
+        .stations ul li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .stations ul li:hover {
+            background-color: #f1f1f1;
+            transform: scale(1.02);
+        }
+        .stations ul li:last-child {
+            border-bottom: none;
+        }
+        .status {
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-left: 10px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s; 
+        }
+        .status.available {
+            background-color: green;
+            color: white;
+        }
+        .status.issue {
+            background-color: red;
+            color: white;
+        }
+        .status.maintenance {
+            background-color: blue;
+            color: white;
+        }
+        .status:hover {
+            cursor: pointer;
+            opacity: 0.8; 
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            z-index: 1000;
+            width: 400px;
+        }
+        .popup-header {
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: #333;
+            border-bottom: 2px solid;
+            padding-bottom: 10px;
+        }
+        .popup-close {
+            cursor: pointer;
+            color: #d32f2f;
+            float: left;
+            font-size: 1.2rem;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        .popup-content {
+            display: flex;
+            flex-direction: column;
+        }
+        .popup-section {
+            margin: 10px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .popup-section label {
+            font-weight: bold;
+            display: block;
+            color: #333;
+        }
+        .popup-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .popup-table th, .popup-table td {
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        .popup-table th {
+            background-color: #f2f2f2;
+        }
+        .popup-table td {
+            width: 20%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/homepage_ar">الرئيسية</a>
+            <a href="/plan-ar">خطط رحلتك</a>
+            <a href="/tickets-ar">التذاكر</a>
+            <a href="/about-ar">عن المترو</a>
+            <a href="/contact_form_ar?source_page=ContactEN.html">اتصل بنا</a>
+            <a href="/user-profile?source_page=PlanAR.html">الملف الشخصي</a>
+        </nav>
+        <div>
+            <a href="/paths" class="lang-link">English</a>
+        </div>
+    </header>
+
+    <div class="intro">
+        <h1>خطوط ومحطات المترو</h1>
+        <p>شبكة مترو الرياض تربط المدينة عبر مجموعة واسعة من الخطوط، تنقل ما يصل إلى 1.6 مليون راكب يوميًا، مما يجعلها حلًا موثوقًا واستراتيجيًا للتنقل السريع.</p>
+    </div>
+    
+    <div class="lines" aria-label="خطوط المترو">
+        <div class="line red-line" aria-labelledby="red-line-header">
+            <div class="line-header" id="red-line-header">الخط الأحمر</div>
+            <div class="stations" aria-label="محطات الخط الأحمر">
+                <ul>
+                    <li onclick="openPopup('جامعة الملك سعود', 'red')"><span>جامعة الملك سعود</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('واحة الملك سلمان', 'red')"><span>واحة الملك سلمان</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('المدينة التقنية', 'red')"><span>المدينة التقنية</span><span class="status issue" title="الحالة: حادث">حادث</span></li>
+                    <li onclick="openPopup('التخصصي', 'red')"><span>التخصصي</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('الاتصالات السعودية', 'red')"><span>الاتصالات السعودية</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('الورود', 'red')"><span>الورود</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('طريق الملك عبدالعزيز', 'red')"><span>طريق الملك عبدالعزيز</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('وزارة التعليم', 'red')"><span>وزارة التعليم</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('النزهة', 'red')"><span>النزهة</span><span class="status issue" title="الحالة: حادث">حادث</span></li>
+                    <li onclick="openPopup('مركز الرياض للمعارض', 'red')"><span>مركز الرياض للمعارض</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('طريق الملك خالد', 'red')"><span>طريق الملك خالد</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('الحمرا', 'red')"><span>الحمرا</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('الخليج', 'red')"><span>الخليج</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('إشبيلية', 'red')"><span>إشبيلية</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('مدينة الملك فهد الرياضية', 'red')"><span>مدينة الملك فهد الرياضية</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="line yellow-line" aria-labelledby="yellow-line-header">
+            <div class="line-header" id="yellow-line-header">الخط الأصفر</div>
+            <div class="stations" aria-label="محطات الخط الأصفر">
+                <ul>
+                    <li onclick="openPopup('المطار T1-T2', 'yellow')"><span>المطار T1-T2</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('المطار T3-T4', 'yellow')"><span>المطار T3-T4</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('المطار T5', 'yellow')"><span>المطار T5</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('جامعة الأميرة نورة 2', 'yellow')"><span>جامعة الأميرة نورة 2</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('جامعة الأميرة نورة 1', 'yellow')"><span>جامعة الأميرة نورة 1</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('سابك', 'yellow')"><span>سابك</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('طريق عثمان بن عفان', 'yellow')"><span>طريق عثمان بن عفان</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('الربيع', 'yellow')"><span>الربيع</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('المنطقة المالية', 'yellow')"><span>المنطقة المالية</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="line purple-line" aria-labelledby="purple-line-header">
+            <div class="line-header" id="purple-line-header">الخط البنفسجي</div>
+            <div class="stations" aria-label="محطات الخط البنفسجي">
+                <ul>
+                    <li onclick="openPopup('المنطقة المالية', 'purple')"><span>المنطقة المالية</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('الربيع', 'purple')"><span>الربيع</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('طريق عثمان بن عفان', 'purple')"><span>طريق عثمان بن عفان</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('سابك', 'purple')"><span>سابك</span><span class="status issue" title="الحالة: حادث">حادث</span></li>
+                    <li onclick="openPopup('غرناطة', 'purple')"><span>غرناطة</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('اليارموك', 'purple')"><span>اليارموك</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('الحمرا', 'purple')"><span>الحمرا</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('الأندلس', 'purple')"><span>الأندلس</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('طريق الخريص', 'purple')"><span>طريق الخريص</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('السلام', 'purple')"><span>السلام</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                    <li onclick="openPopup('النسيم', 'purple')"><span>النسيم</span><span class="status available" title="الحالة: متاحة">متاحة</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup" class="popup">
+        <div id="popup-header" class="popup-header">تفاصيل المحطة</div>
+        <div id="popup-content" class="popup-content">
+            <div class="popup-section">
+                <label>جدول الصيانة:</label>
+                <div>فحص روتيني<br>أوقات الصيانة من 12:00 ظهرًا إلى 6:00 صباحًا</div>
+            </div>
+            <div class="popup-section">
+                <label>الوجهة:</label>
+                <div><br></div>
+            </div>
+            <div class="popup-section">
+                <label>عدد الركاب في المحطة: </label>
+                <div id="passenger-count"></div>
+            </div>
+            <div class="popup-section">
+                <label>جدول القطارات:</label>
+                <table class="popup-table">
+                    <thead>
+                        <tr>
+                            <th>الوقت</th>
+                            <th>الوجهة</th>
+                            <th>المسار</th>
+                            <th>الحالة</th>
+                            <th>عدد الركاب في القطار</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="overlay" class="overlay"></div>
+
+    <script>
+        function openPopup(stationName, lineColor) {
+            let passengerCount = Math.floor(Math.random() * 100) + 1;
+            document.getElementById('passenger-count').innerText = passengerCount;
+
+            document.getElementById('popup-header').innerText = 'تفاصيل المحطة - ' + stationName;
+            
+            document.getElementById('popup-header').style.borderColor = 
+                lineColor === 'red' ? '#d32f2f' : 
+                lineColor === 'yellow' ? '#fbc02d' : '#6a1b9a';
+            
+            let stations = {
+                red: ['جامعة الملك سعود', 'مدينة الملك فهد الرياضية'],
+                yellow: ['المطار T1-T2', 'المنطقة المالية'],
+                purple: ['المنطقة المالية', 'النسيم']
+            };
+            
+            let destinationFirstLast = lineColor === 'red' ? [stations.red[0], stations.red[stations.red.length - 1]] :
+                                   lineColor === 'yellow' ? [stations.yellow[0], stations.yellow[stations.yellow.length - 1]] :
+                                   [stations.purple[0], stations.purple[stations.purple.length - 1]];
+
+            document.getElementById('popup-content').querySelector('.popup-section').nextElementSibling.querySelector('div').innerText = 
+                `الوجهة: ${destinationFirstLast[0]}, ${destinationFirstLast[1]}`;
+            
+            let timeTable = document.getElementById('popup-content').querySelector('.popup-table tbody');
+            timeTable.innerHTML = '';
+
+            let timeData = [];
+            for (let i = 0; i < 5; i++) {
+                let randomTime = Math.floor(Math.random() * 11) + 2;
+                let time = randomTime + i * Math.floor(Math.random() * 11) + 5;
+                let destination = stations[lineColor][Math.random() > 0.5 ? 1 : 0];
+                let status = Math.random() > 0.2 ? 'في الوقت' : 'متأخر';
+                let platform = `${lineColor.charAt(0).toUpperCase()}-${Math.floor(Math.random() * 99) + 1}`;
+                let passengerFlow = Math.floor(Math.random() * 100) + 1;
+
+                timeData.push({
+                    time: time,
+                    destination: destination,
+                    platform: platform,
+                    status: status,
+                    passengerFlow: passengerFlow
+                });
+            }
+
+            timeData.sort((a, b) => a.time - b.time);
+
+            timeData.forEach(row => {
+                let rowHTML = `
+                    <tr>
+                        <td>${row.time} دقيقة</td>
+                        <td>${row.destination}</td>
+                        <td>${row.platform}</td>
+                        <td>${row.status}</td>
+                        <td>${row.passengerFlow}</td>
+                    </tr>
+                `;
+                timeTable.insertAdjacentHTML('beforeend', rowHTML);
+            });
+
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        document.getElementById('overlay').addEventListener('click', closePopup);
+        document.querySelector('.popup-close').addEventListener('click', closePopup);
+    </script>
+</body>
+</html>

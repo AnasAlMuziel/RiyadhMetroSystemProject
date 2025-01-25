@@ -1,0 +1,183 @@
+body {
+    margin: 0;
+    font-family: "Almarai", sans-serif;
+    color: #333;
+}
+
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #a102c9;
+}
+
+.lang-link {
+    color: #32cd32;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.lang-link:hover {
+    text-decoration: underline;
+}
+
+.map-container {
+    display: flex;
+    height: calc(100vh - 120px);
+    background-color: #f5f5f5;
+}
+
+.map-sidebar {
+    width: 350px;
+    background: white;
+    padding: 20px;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.map-sidebar h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.station-info {
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.station-info h3 {
+    margin-top: 0;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: "Almarai", sans-serif;
+}
+
+.plan-button {
+    background-color: #32cd32;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-family: "Almarai", sans-serif;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.plan-button:hover {
+    background-color: #28a428;
+}
+
+#map {
+    flex: 1;
+    background: #e5e3df;
+}
+
+.custom-popup .leaflet-popup-content-wrapper {
+    background: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.popup-button {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.popup-button.start {
+    background: #3b82f6;
+    color: white;
+}
+
+.popup-button.start:hover {
+    background: #2563eb;
+}
+
+.popup-button.destination {
+    background: #22c55e;
+    color: white;
+}
+
+.popup-button.destination:hover {
+    background: #16a34a;
+}
+
+.custom-div-icon {
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.route-info {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.route-info p {
+    margin: 0.5rem 0;
+}
+
+.route-info .transfer-info {
+    color: #4b5563;
+    font-size: 0.875rem;
+    padding: 0.5rem 0;
+}
+
+.route-info .time-estimate {
+    color: #4b5563;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+footer {
+    background-color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}

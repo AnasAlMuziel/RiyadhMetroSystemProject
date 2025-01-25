@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment - Premium 7 Days</title>
+    <link rel="icon" href="../static/images/train.png" type="image/png" />
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Almarai", sans-serif;
+        color: #333;
+        background-color: #c8e9c8;
+      }
+      header {
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+      }
+      nav a {
+        margin: 0 15px;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+      nav a:hover {
+        color: #32cd32;
+      }
+      .payment-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+      }
+      .payment-box {
+        background-color: white;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 400px;
+      }
+      .payment-box h2 {
+        text-align: center;
+        color: #32cd32;
+      }
+      .payment-box input {
+        width: 100%;
+        padding: 12px;
+        margin: 15px 0;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1rem;
+      }
+      .payment-box button {
+        width: 100%;
+        background-color: #32cd32;
+        color: white;
+        border: none;
+        padding: 15px;
+        font-size: 1rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .payment-box button:hover {
+        background-color: #28a428;
+      }
+    </style>
+</head>
+<body>
+
+
+    <div class="payment-section">
+        <div class="payment-box">
+            <h2>Payment - Premium 2 hours</h2>
+            <p>Price: <strong>10 SAR</strong></p>
+            <form action="/id">
+                <input type="text" placeholder="Card Number" value="" required />
+                <input type="text" placeholder="MM/YY" value="" required />
+                <input type="text" placeholder="CVC" value="" required />
+                <input type="text" placeholder="Cardholder Name" value="" required />
+                <button type="submit">Pay Now</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
